@@ -1,6 +1,11 @@
 package com.example.cyberconnect
 
-class CyberConnect(private var walletAddress: String) {
+import android.os.Build
+import androidx.annotation.NonNull
+import androidx.annotation.RequiresApi
+
+@RequiresApi(Build.VERSION_CODES.M)
+class CyberConnect(@NonNull private var walletAddress: String) {
     private val networkRequestManager = NetworkRequestManager()
     fun registerKey(signature: String, networkType: NetworkType, updateResults: (result: String) -> Unit) {
         networkRequestManager.registerKey(this.walletAddress, signature, networkType, updateResults)
@@ -20,5 +25,13 @@ class CyberConnect(private var walletAddress: String) {
 
     fun setAlias(toAddress: String, alias: String, network: NetworkType, updateResults: (result: String) -> Unit) {
         networkRequestManager.setAlias(this.walletAddress, toAddress,alias, network, updateResults)
+    }
+
+    fun getPublicKeyString(): String? {
+        return Utils().getPublicKeyString(this.walletAddress)
+    }
+
+    fun getAuthorizeString(publicKey: String): String {
+        return Utils().getAuthorizeString(publicKey)
     }
 }
