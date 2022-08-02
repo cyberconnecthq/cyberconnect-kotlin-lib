@@ -7,7 +7,12 @@ cyberconnect-kotlin-lib is a lib support CyberConnect API, here is an example re
 ## Getting started
 
 ### Installation
-For now you can integrate the lib manually, we will support gradle integration very soon!
+Grandle
+```
+implementation 'com.github.cyberconnecthq:cyberconnect-kotlin-lib:v1.0.1'
+```
+Or just add the files manully
+
 
 ### Basic usage
 
